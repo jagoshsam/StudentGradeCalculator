@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Grade Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #6366f1);
+            min-height: 100vh;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 25px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            background: #eff6ff;
+            border-radius: 12px;
+            border-left: 5px solid #2563eb;
+        }
+
+        .result h2 {
+            color: #1e3a8a;
+        }
+
+        .status {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Grade Calculator</h1>
+
+    <p class="subtitle">
+        Calculate student marks, percentage and grades
+    </p>
+
+    <form method="POST">
+
+        <label>Student Name</label>
+        <input type="text" name="name" required>
+
+        <label>Roll Number</label>
+        <input type="text" name="roll_number" required>
+
+        <label>English Marks</label>
+        <input type="number" name="English" min="0" max="100" required>
+
+        <label>Mathematics Marks</label>
+        <input type="number" name="Mathematics" min="0" max="100" required>
+
+        <label>Science Marks</label>
+        <input type="number" name="Science" min="0" max="100" required>
+
+        <label>Computer Science Marks</label>
+        <input type="number" name="Computer Science" min="0" max="100" required>
+
+        <label>Social Studies Marks</label>
+        <input type="number" name="Social Studies" min="0" max="100" required>
+
+        <button type="submit">Calculate Grade</button>
+
+    </form>
+
+    {% if result %}
+
+    <div class="result">
+
+        <h2>Student Result</h2>
+
+        <p><strong>Name:</strong> {{ result.name }}</p>
+
+        <p><strong>Roll Number:</strong>
+            {{ result.roll_number }}
+        </p>
+
+        <p><strong>Total Marks:</strong>
+            {{ result.total }} / 500
+        </p>
+
+        <p><strong>Percentage:</strong>
+            {{ result.percentage }}%
+        </p>
+
+        <p><strong>Grade:</strong>
+            {{ result.grade }}
+        </p>
+
+        <p class="status">
+            Result: {{ result.status }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
